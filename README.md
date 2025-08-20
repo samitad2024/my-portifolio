@@ -35,6 +35,10 @@ Its a portfolio website for developers developed using [Jaspr](https://docs.page
 
 [DEPRECATED]📙 Article: https://mhamzadev.medium.com/folio-responsive-portfolio-using-flutter-2-0-86ae3e6cce4f
 
+## ⭐️ Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=mhmzdev/devfolio&type=Date)](https://www.star-history.com/#mhmzdev/devfolio&Date)
+
 
 ## 🔑 License
 - This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details
