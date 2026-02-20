@@ -1,4 +1,6 @@
+import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
+import 'package:jaspr/dom.dart';
 
 import 'pages/home.dart';
 
@@ -41,23 +43,20 @@ class AppState extends State<App> {
     // create and return a [List] here.
 
     // Renders a <div class="main"> html element with children.
-    yield div(classes: 'main', [
-      Home(),
-    ]);
+    yield div(classes: 'main', [Home()]);
   }
 
   // Defines the css styles for elements of this component.
   //
   // By using the @css annotation, these will be rendered automatically to css inside the <head> of your page.
   // Must be a variable or getter of type [List<StyleRule>].
-  @css
-  static final styles = [
+  static final List<StyleRule> styles = [
     css('.main', [
-      css('p').text(color: Colors.white),
-      css('a').text(color: Colors.white),
-      css('h1').text(color: Colors.white),
-      css('h2').text(color: Colors.white),
-      css('span').text(color: Colors.white),
+      css('p', [css.text(color: Colors.white)]),
+      css('a', [css.text(color: Colors.white)]),
+      css('h1', [css.text(color: Colors.white)]),
+      css('h2', [css.text(color: Colors.white)]),
+      css('span', [css.text(color: Colors.white)]),
     ]),
   ];
 }
