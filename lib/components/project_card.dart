@@ -1,5 +1,6 @@
 import 'package:devfolio/constants/theme.dart';
 import 'package:jaspr/jaspr.dart';
+import 'package:jaspr/dom.dart';
 
 @client
 class ProjectCard extends StatelessComponent {
@@ -21,25 +22,21 @@ class ProjectCard extends StatelessComponent {
   Iterable<Component> build(BuildContext context) sync* {
     yield a(href: url, target: Target.blank, classes: 'banner-card', [
       div(
-          classes: 'banner-image',
-          styles: Styles.combine([
-            Styles.background(
-              image: ImageStyle.url(banner),
-              size: BackgroundSize.cover,
-            ),
-          ]),
-          []),
+        classes: 'banner-image',
+        styles: Styles.combine([
+          Styles.background(
+            image: ImageStyle.url(banner),
+            size: BackgroundSize.cover,
+          ),
+        ]),
+        [],
+      ),
       img(src: icon, height: 40),
-      span(classes: 'service-title', [
-        text(title),
-      ]),
-      span(classes: 'service-description', [
-        text(description),
-      ]),
+      span(classes: 'service-title', [text(title)]),
+      span(classes: 'service-description', [text(description)]),
     ]);
   }
 
-  @css
   static final List<StyleRule> styles = [
     css('.banner-card')
         .flexbox(
@@ -53,12 +50,8 @@ class ProjectCard extends StatelessComponent {
           radius: BorderRadius.circular(12.px),
           margin: EdgeInsets.only(top: 25.px, left: 15.px, right: 15.px),
         )
-        .background(
-          color: themeDarkGreyColor,
-        )
-        .text(
-          decoration: TextDecoration.none,
-        ),
+        .background(color: themeDarkGreyColor),
+    css('.banner-card', [css.text(decoration: TextDecoration.none)]),
     css('.banner-card:hover').box(
       shadow: BoxShadow(
         color: themePrimaryColor,
@@ -70,27 +63,21 @@ class ProjectCard extends StatelessComponent {
       transition: Transition('box-shadow', duration: 500),
       cursor: Cursor.pointer,
     ),
-    css('.banner-image').box(
-      height: 200.px,
-      width: 350.px,
+    css('.banner-image').box(height: 200.px, width: 350.px),
+    css('.service-description').box(
+      padding: EdgeInsets.symmetric(horizontal: 10.px),
+      margin: EdgeInsets.only(top: 10.px),
     ),
-    css('.service-description')
-        .text(
-          fontSize: 12.px,
-          align: TextAlign.center,
-        )
-        .box(
-          padding: EdgeInsets.symmetric(horizontal: 10.px),
-          margin: EdgeInsets.only(top: 10.px),
-        ),
+    css('.service-description', [
+      css.text(fontSize: 12.px, align: TextAlign.center),
+    ]),
     css('.banner-image').box(
       opacity: 1.0,
       radius: BorderRadius.circular(12.px),
       position: Position.absolute(),
     ),
-    css('.banner-image:hover').box(
-      opacity: 0,
-      transition: Transition('opacity', duration: 500),
-    ),
+    css(
+      '.banner-image:hover',
+    ).box(opacity: 0, transition: Transition('opacity', duration: 500)),
   ];
 }
