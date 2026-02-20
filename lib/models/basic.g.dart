@@ -6,7 +6,7 @@ part of 'basic.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$BasicImpl _$$BasicImplFromJson(Map<String, dynamic> json) => _$BasicImpl(
+_Basic _$BasicFromJson(Map<String, dynamic> json) => _Basic(
       firstName: json['firstName'] as String,
       lastName: json['lastName'] as String,
       age: (json['age'] as num).toInt(),
@@ -18,8 +18,7 @@ _$BasicImpl _$$BasicImplFromJson(Map<String, dynamic> json) => _$BasicImpl(
       resume: json['resume'] as String,
     );
 
-Map<String, dynamic> _$$BasicImplToJson(_$BasicImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$BasicToJson(_Basic instance) => <String, dynamic>{
       'firstName': instance.firstName,
       'lastName': instance.lastName,
       'age': instance.age,
