@@ -10,11 +10,13 @@ import 'package:devfolio/sections/contact.dart';
 import 'package:devfolio/sections/projects.dart';
 import 'package:devfolio/sections/services.dart';
 import 'package:jaspr/server.dart';
+import 'package:jaspr/dom.dart';
 
 class Home extends AsyncStatelessComponent {
   Future<Data> fetchData() async {
-    final String fileResponse =
-        File('${Directory.current.path}/web/data/data.json').readAsStringSync();
+    final String fileResponse = File(
+      '${Directory.current.path}/web/data/data.json',
+    ).readAsStringSync();
     final Map<String, dynamic> raw =
         jsonDecode(fileResponse) as Map<String, dynamic>;
 
@@ -28,35 +30,16 @@ class Home extends AsyncStatelessComponent {
 
     yield div(classes: 'home-body', [
       NavBar(),
-      BasicInfoSection(
-        basic: data.basic,
-        socials: data.socials,
-      ),
-      AboutMeSection(
-        about: data.about,
-        basic: data.basic,
-      ),
-      ServicesSection(
-        services: data.services,
-      ),
-      ProjectsSections(
-        projects: data.projects,
-      ),
-      ContactSection(
-        contacts: data.contact,
-      ),
+      BasicInfoSection(basic: data.basic, socials: data.socials),
+      AboutMeSection(about: data.about, basic: data.basic),
+      ServicesSection(services: data.services),
+      ProjectsSections(projects: data.projects),
+      ContactSection(contacts: data.contact),
       Footer(),
     ]);
   }
 
-  @css
   static final List<StyleRule> styles = [
-    css('.home-body')
-        .box(
-          width: 100.vw,
-        )
-        .background(
-          color: Colors.black,
-        ),
+    css('.home-body').box(width: 100.vw).background(color: Colors.black),
   ];
 }
