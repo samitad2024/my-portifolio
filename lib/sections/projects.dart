@@ -2,23 +2,17 @@ import 'package:devfolio/components/app_button.dart';
 import 'package:devfolio/components/project_card.dart';
 import 'package:devfolio/models/project.dart';
 import 'package:jaspr/jaspr.dart';
+import 'package:jaspr/dom.dart';
 
 class ProjectsSections extends StatelessComponent {
   final List<Project> projects;
-  const ProjectsSections({
-    super.key,
-    required this.projects,
-  });
+  const ProjectsSections({super.key, required this.projects});
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
     yield section(classes: 'projects-section', [
-      span(classes: 'title', [
-        text('Portfolio'),
-      ]),
-      span(classes: 'subtitle', [
-        text("Here are few samples of my work :)"),
-      ]),
+      span(classes: 'title', [text('Portfolio')]),
+      span(classes: 'subtitle', [text("Here are few samples of my work :)")]),
       div(classes: 'section-body-projects', id: 'projects', [
         for (final project in projects)
           ProjectCard(
@@ -30,14 +24,10 @@ class ProjectsSections extends StatelessComponent {
           ),
       ]),
       div(styles: Styles.box(height: 45.px), []),
-      AppButton(
-        label: 'See more',
-        href: 'https://github.com/mhmzdev',
-      ),
+      AppButton(label: 'See more', href: 'https://github.com/mhmzdev'),
     ]);
   }
 
-  @css
   static final List<StyleRule> styles = [
     css('.projects-section')
         .flexbox(
