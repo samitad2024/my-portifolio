@@ -1,23 +1,17 @@
 import 'package:devfolio/components/contact.dart';
 import 'package:devfolio/models/contact.dart';
 import 'package:jaspr/jaspr.dart';
+import 'package:jaspr/dom.dart';
 
 class ContactSection extends StatelessComponent {
   final List<Contact> contacts;
-  const ContactSection({
-    super.key,
-    required this.contacts,
-  });
+  const ContactSection({super.key, required this.contacts});
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
     yield section(classes: 'contact-section', [
-      span(classes: 'title', [
-        text('Get in Touch'),
-      ]),
-      span(classes: 'subtitle', [
-        text("Let's build something together :)"),
-      ]),
+      span(classes: 'title', [text('Get in Touch')]),
+      span(classes: 'subtitle', [text("Let's build something together :)")]),
       div(classes: 'contact-body', id: 'contact', [
         for (final contact in contacts)
           ContactCard(
@@ -26,11 +20,10 @@ class ContactSection extends StatelessComponent {
             description: contact.description,
             action: contact.action,
           ),
-      ])
+      ]),
     ]);
   }
 
-  @css
   static final List<StyleRule> styles = [
     css('.contact-section')
         .flexbox(
