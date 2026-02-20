@@ -6,8 +6,7 @@ part of 'project.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ProjectImpl _$$ProjectImplFromJson(Map<String, dynamic> json) =>
-    _$ProjectImpl(
+_Project _$ProjectFromJson(Map<String, dynamic> json) => _Project(
       banner: json['banner'] as String,
       icon: json['icon'] as String,
       title: json['title'] as String,
@@ -15,8 +14,7 @@ _$ProjectImpl _$$ProjectImplFromJson(Map<String, dynamic> json) =>
       link: json['link'] as String,
     );
 
-Map<String, dynamic> _$$ProjectImplToJson(_$ProjectImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$ProjectToJson(_Project instance) => <String, dynamic>{
       'banner': instance.banner,
       'icon': instance.icon,
       'title': instance.title,
