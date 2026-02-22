@@ -9,32 +9,30 @@ class ServiceCard extends StatelessComponent {
   const ServiceCard({super.key, required this.icon, required this.label});
 
   @override
-  Iterable<Component> build(BuildContext context) sync* {
-    yield div(classes: 'service-card', [
+  Component build(BuildContext context) {
+    return div(classes: 'service-card', [
       img(src: icon, height: 80),
       span(classes: 'service-title', [text(label)]),
     ]);
   }
 
   static final List<StyleRule> styles = [
-    css('.service-card')
-        .flexbox(
-          direction: FlexDirection.column,
-          alignItems: AlignItems.center,
-          justifyContent: JustifyContent.center,
-        )
-        .box(
-          padding: EdgeInsets.all(15.px),
-          height: 200.px,
-          width: 250.px,
-          radius: BorderRadius.circular(12.px),
-          margin: EdgeInsets.only(top: 25.px, left: 15.px, right: 15.px),
-        )
-        .background(color: themeDarkGreyColor),
-    css(
-      '.service-title',
-    ).text(fontSize: 14.px).box(margin: EdgeInsets.only(top: 10.px)),
-    css('.service-card:hover').box(
+    css('.service-card').styles(
+      flexDirection: FlexDirection.column,
+      alignItems: AlignItems.center,
+      justifyContent: JustifyContent.center,
+      padding: Padding.all(15.px),
+      height: 200.px,
+      width: 250.px,
+      radius: BorderRadius.circular(12.px),
+      margin: Margin.only(top: 25.px, left: 15.px, right: 15.px),
+      backgroundColor: themeDarkGreyColor,
+    ),
+    css('.service-title').styles(
+      fontSize: 14.px,
+      margin: Margin.only(top: 10.px),
+    ),
+    css('.service-card:hover').styles(
       shadow: BoxShadow(
         color: themePrimaryColor,
         offsetX: 0.px,
@@ -42,7 +40,10 @@ class ServiceCard extends StatelessComponent {
         blur: 8.px,
         spread: 2.px,
       ),
-      transition: Transition('box-shadow', duration: 500),
+      transition: Transition(
+        'box-shadow',
+        duration: Duration(milliseconds: 500),
+      ),
     ),
   ];
 }
