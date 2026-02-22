@@ -44,31 +44,27 @@ void main() {
       },
       lang: 'en',
       styles: [
-        // Special import rule to include to another css file.
         css.import('https://fonts.googleapis.com/css?family=Montserrat'),
-        // Each style rule takes a valid css selector and a set of styles.
-        // Styles are defined using type-safe css bindings and can be freely chained and nested.
-        css('html, body')
-            .box(width: 100.percent, minHeight: 100.vh)
-            .box(margin: EdgeInsets.zero, padding: EdgeInsets.zero),
-        css('html, body', [
-          css.text(
-            fontFamily: const FontFamily.list([
-              FontFamily('Montserrat'),
-              FontFamilies.sansSerif,
-            ]),
-          ),
-        ]),
-        css('h1').box(margin: EdgeInsets.unset),
-        css('h1', [css.text(fontSize: 4.rem)]),
+        css('html, body').styles(
+          width: 100.percent,
+          minHeight: 100.vh,
+          margin: Margin.zero,
+          padding: Padding.zero,
+          fontFamily: FontFamily.list(const [
+            FontFamily('Montserrat'),
+            FontFamilies.sansSerif,
+          ]),
+        ),
+        css('h1').styles(margin: Margin.zero, fontSize: 4.rem),
         css.fontFace(family: 'Agustina', url: 'fonts/agustina/agustina.otf'),
-        css('::-webkit-scrollbar').box(width: 8.px, height: 0.px),
+        css('::-webkit-scrollbar').styles(width: 8.px, height: Unit.zero),
         css(
           '::-webkit-scrollbar-track',
-        ).box(radius: BorderRadius.circular(8.px)),
-        css('::-webkit-scrollbar-thumb')
-            .box(radius: BorderRadius.circular(8.px))
-            .background(color: themePrimaryColor),
+        ).styles(radius: BorderRadius.circular(8.px)),
+        css('::-webkit-scrollbar-thumb').styles(
+          radius: BorderRadius.circular(8.px),
+          backgroundColor: themePrimaryColor,
+        ),
       ],
       body: App(),
     ),
