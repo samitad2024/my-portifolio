@@ -8,8 +8,8 @@ class ContactSection extends StatelessComponent {
   const ContactSection({super.key, required this.contacts});
 
   @override
-  Iterable<Component> build(BuildContext context) sync* {
-    yield section(classes: 'contact-section', [
+  Component build(BuildContext context) {
+    return section(classes: 'contact-section', [
       span(classes: 'title', [text('Get in Touch')]),
       span(classes: 'subtitle', [text("Let's build something together :)")]),
       div(classes: 'contact-body', id: 'contact', [
@@ -25,25 +25,19 @@ class ContactSection extends StatelessComponent {
   }
 
   static final List<StyleRule> styles = [
-    css('.contact-section')
-        .flexbox(
-          direction: FlexDirection.column,
-          alignItems: AlignItems.center,
-          justifyContent: JustifyContent.start,
-        )
-        .box(
-          padding: EdgeInsets.symmetric(vertical: 5.vh, horizontal: 10.vw),
-        ),
-    css('.contact-body')
-        .flexbox(
-          direction: FlexDirection.row,
-          alignItems: AlignItems.center,
-          justifyContent: JustifyContent.center,
-          wrap: FlexWrap.wrap,
-        )
-        .box(
-          margin: EdgeInsets.only(top: 50.px),
-          width: 100.percent,
-        ),
+    css('.contact-section').styles(
+      flexDirection: FlexDirection.column,
+      alignItems: AlignItems.center,
+      justifyContent: JustifyContent.start,
+      padding: Padding.symmetric(vertical: 5.vh, horizontal: 10.vw),
+    ),
+    css('.contact-body').styles(
+      flexDirection: FlexDirection.row,
+      alignItems: AlignItems.center,
+      justifyContent: JustifyContent.center,
+      flexWrap: FlexWrap.wrap,
+      margin: Margin.only(top: 50.px),
+      width: 100.percent,
+    ),
   ];
 }
