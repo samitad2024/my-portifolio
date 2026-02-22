@@ -6,8 +6,8 @@ import 'package:jaspr/dom.dart';
 class AppButton extends StatelessComponent {
   final String label;
   final String href;
-  final Unit? width;
-  final Unit? height;
+  final double? width;
+  final double? height;
 
   const AppButton({
     super.key,
@@ -18,11 +18,14 @@ class AppButton extends StatelessComponent {
   });
 
   @override
-  Iterable<Component> build(BuildContext context) sync* {
-    yield a(
+  Component build(BuildContext context) {
+    return a(
       classes: 'app-button',
       target: Target.blank,
-      styles: Styles.box(width: width?.px, height: height?.px),
+      styles: Styles(
+        width: width != null ? Unit.pixels(width!) : null,
+        height: height != null ? Unit.pixels(height!) : null,
+      ),
       href: href,
       [
         span(classes: 'label', [text(label)]),
@@ -31,26 +34,25 @@ class AppButton extends StatelessComponent {
   }
 
   static final List<StyleRule> styles = [
-    css('.app-button')
-        .box(
-          width: 100.px,
-          padding: EdgeInsets.all(10.px),
-          radius: BorderRadius.circular(6.px),
-          border: Border.all(BorderSide(color: themePrimaryColor, width: 1.px)),
-        )
-        .flexbox(
-          direction: FlexDirection.row,
-          alignItems: AlignItems.center,
-          justifyContent: JustifyContent.center,
-        )
-        .text(decoration: TextDecoration.none)
-        .background(color: Colors.transparent),
-    css('.app-button:hover')
-        .background(color: themePrimaryColor)
-        .box(
-          transition: Transition('background-color', duration: 500),
-          cursor: Cursor.pointer,
-        ),
-    css('.label').text(fontSize: 12.px),
+    css('.app-button').styles(
+      width: 100.px,
+      padding: Padding.all(10.px),
+      radius: BorderRadius.circular(6.px),
+      border: Border.all(color: themePrimaryColor, width: 1.px),
+      flexDirection: FlexDirection.row,
+      alignItems: AlignItems.center,
+      justifyContent: JustifyContent.center,
+      textDecoration: TextDecoration.none,
+      backgroundColor: Colors.transparent,
+    ),
+    css('.app-button:hover').styles(
+      backgroundColor: themePrimaryColor,
+      transition: Transition(
+        'background-color',
+        duration: Duration(milliseconds: 500),
+      ),
+      cursor: Cursor.pointer,
+    ),
+    css('.label').styles(fontSize: 12.px),
   ];
 }
