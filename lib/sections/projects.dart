@@ -9,8 +9,8 @@ class ProjectsSections extends StatelessComponent {
   const ProjectsSections({super.key, required this.projects});
 
   @override
-  Iterable<Component> build(BuildContext context) sync* {
-    yield section(classes: 'projects-section', [
+  Component build(BuildContext context) {
+    return section(classes: 'projects-section', [
       span(classes: 'title', [text('Portfolio')]),
       span(classes: 'subtitle', [text("Here are few samples of my work :)")]),
       div(classes: 'section-body-projects', id: 'projects', [
@@ -23,31 +23,25 @@ class ProjectsSections extends StatelessComponent {
             url: project.link,
           ),
       ]),
-      div(styles: Styles.box(height: 45.px), []),
+      div(styles: Styles(height: 45.px), []),
       AppButton(label: 'See more', href: 'https://github.com/mhmzdev'),
     ]);
   }
 
   static final List<StyleRule> styles = [
-    css('.projects-section')
-        .flexbox(
-          direction: FlexDirection.column,
-          alignItems: AlignItems.center,
-          justifyContent: JustifyContent.start,
-        )
-        .box(
-          padding: EdgeInsets.symmetric(vertical: 5.vh, horizontal: 10.vw),
-        ),
-    css('.section-body-projects')
-        .flexbox(
-          direction: FlexDirection.row,
-          alignItems: AlignItems.center,
-          justifyContent: JustifyContent.center,
-          wrap: FlexWrap.wrap,
-        )
-        .box(
-          margin: EdgeInsets.only(top: 50.px),
-          width: 100.percent,
-        ),
+    css('.projects-section').styles(
+      flexDirection: FlexDirection.column,
+      alignItems: AlignItems.center,
+      justifyContent: JustifyContent.start,
+      padding: Padding.symmetric(vertical: 5.vh, horizontal: 10.vw),
+    ),
+    css('.section-body-projects').styles(
+      flexDirection: FlexDirection.row,
+      alignItems: AlignItems.center,
+      justifyContent: JustifyContent.center,
+      flexWrap: FlexWrap.wrap,
+      margin: Margin.only(top: 50.px),
+      width: 100.percent,
+    ),
   ];
 }
