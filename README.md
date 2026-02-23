@@ -22,22 +22,6 @@ Its a portfolio website for developers developed using [Jaspr](https://docs.page
 - Home
 - About
 - Services
-- Portfolio
-- Contact
-
-## 🔗 Useful links
-
-🌐 Website: https://mhmzdev.github.io/devfolio-jaspr
-
-💻 Old Flutter App: https://mhmzdev.github.io/devfolio
-
-[DEPRECATED]📱 Android App: https://play.google.com/store/apps/details?id=com.hmz.folio
-
-[DEPRECATED]📙 Article: https://mhamzadev.medium.com/folio-responsive-portfolio-using-flutter-2-0-86ae3e6cce4f
-
-## ⭐️ Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=mhmzdev/devfolio&type=Date)](https://www.star-history.com/#mhmzdev/devfolio&Date)
 
 
 ## 🔑 License
